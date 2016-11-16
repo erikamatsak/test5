@@ -26,12 +26,12 @@ public class NewJFrame extends javax.swing.JFrame {
 
         canvas1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                hiireKlick(evt);
+                hiireClick(evt);
             }
         });
         canvas1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                klahvidVajutatud(evt);
+                klahvid(evt);
             }
         });
 
@@ -39,56 +39,67 @@ public class NewJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(canvas1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }//GEN-END:initComponents
 
-    private void hiireKlick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiireKlick
+    private void hiireClick(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiireClick
         // TODO add your handling code here:
+        System.out.println("vajutasid");
         System.out.println(evt.getX());
         System.out.println(evt.getY());
-        xKordinaat = evt.getX();
-        yKordinaat = evt.getY();
+        x=evt.getX();
+        y=evt.getY();
         canvas1.repaint();
-    }//GEN-LAST:event_hiireKlick
+    }//GEN-LAST:event_hiireClick
 
-    private void klahvidVajutatud(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_klahvidVajutatud
+    private void klahvid(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_klahvid
         // TODO add your handling code here:
-        // TODO add your handling code here:
-        if(evt.getKeyCode() == evt.VK_DOWN){
-            System.out.println("Vajutasid alla");
+        if(evt.getKeyCode()==evt.VK_DOWN){
+            System.out.println("vajutasid alla");
             y1=y1+10;
-            }
-        if(evt.getKeyCode() == evt.VK_UP){
-            System.out.println("Vajutasid üles");
-            y1=y1-10;
-            }
-        if(evt.getKeyCode() == evt.VK_RIGHT){
-            System.out.println("Vajutasid paremale");
-            x1=x1+10;
-            }
-        if(evt.getKeyCode() == evt.VK_LEFT){
-            System.out.println("Vajutasid vasakule");
-            x1=x1-10;
-            }
-        if(y1>=120 && y1<=180 && x1>=120 && x1<=180){
-        System.out.println("Olen kastis");
         }
-        canvas1.repaint();
+        if(evt.getKeyCode()==evt.VK_UP){
+            System.out.println("vajutasid ylesse");
+            y1=y1-10;
+        }
         
-    }//GEN-LAST:event_klahvidVajutatud
+        if(evt.getKeyCode()==evt.VK_RIGHT){
+            System.out.println("vajutasid paramele");
+            x1=x1+10;
+        }
+        if(evt.getKeyCode()==evt.VK_LEFT){
+            System.out.println("vajutasid vasakule");
+            x1=x1-10;
+        }
+        
+        int y2_1=200;
+        int y2_2=200+100-70;
+        int x2_1=10;
+        int x2_2=110-70;
+        
+        if((x1>=x2_1) & (x1<=x2_2)& (y1>=y2_1)&(y1<=y2_2)){
+            System.out.println("liblikas on kasti sees, liblika asukoht on "+ x1+ " ja " +y1);
+        }
+        else{
+            System.out.println("liblikas on kastist väljas või osaliselt väljas, liblika asukoht on "+ x1+ " ja " +y1);
+        }
+        
+        
+        canvas1.repaint();
+    }//GEN-LAST:event_klahvid
 
     /**
      * @param args the command line arguments
@@ -162,11 +173,8 @@ public class NewJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
     // End of variables declaration//GEN-END:variables
-static int xKordinaat;
-static int yKordinaat;
-
-static int x1=200;
-static int y1=200;
-
-
+    static int x=0;
+    static int y=0;
+    static int x1=200;
+    static int y1=200;
 }
